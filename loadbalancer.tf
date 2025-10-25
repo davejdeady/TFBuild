@@ -9,7 +9,7 @@ resource "aws_lb" "nginx" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = [aws_subnet.public_subnet1.id, aws_subnet.public_subnet2.id]
-  depends_on = [ aws_s3_bucket_policy.allow_access_from_another_account]
+  depends_on         = [aws_s3_bucket_policy.allow_access_from_another_account]
 
   enable_deletion_protection = false
 

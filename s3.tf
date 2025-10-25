@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "elb_logs" {
       "s3:ListBucket",
     ]
 
-    resources = [aws_s3_bucket.web_bucket.arn,"${aws_s3_bucket.web_bucket.arn}/alb_logs/*"]
+    resources = [aws_s3_bucket.web_bucket.arn, "${aws_s3_bucket.web_bucket.arn}/alb_logs/*"]
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_s3_object" "graphic" {
   key    = "/website/Globo_logo_Vert.png"
   source = "./website/Globo_logo_Vert.png"
 
-    tags = local.common_tags
+  tags = local.common_tags
 }
 
 resource "aws_s3_object" "html" {
@@ -44,5 +44,5 @@ resource "aws_s3_object" "html" {
   key    = "/website/index.html"
   source = "./website/index.html"
 
-    tags = local.common_tags
+  tags = local.common_tags
 }

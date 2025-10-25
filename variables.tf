@@ -8,6 +8,12 @@ variable "enable_dns_hostnames" {
   description = "dns enabled value"
   default     = true
 }
+
+variable "TF_LOG" {
+  type    = bool
+  default = true
+}
+
 variable "vpc_cidr_block" {
   type        = string
   description = "vpc cidr block"
