@@ -16,15 +16,12 @@ resource "aws_vpc" "app" {
   enable_dns_hostnames = true
 
   tags = local.common_tags
-
-
 }
 
 resource "aws_internet_gateway" "app" {
   vpc_id = aws_vpc.app.id
 
   tags = local.common_tags
-
 }
 
 resource "aws_subnet" "public_subnet1" {
