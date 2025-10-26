@@ -4,6 +4,7 @@ data "aws_ssm_parameter" "amzn2_linux" {
 }
 
 
+
 # INSTANCES #
 resource "aws_instance" "nginx1" {
   ami                    = nonsensitive(data.aws_ssm_parameter.amzn2_linux.value)
