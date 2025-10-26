@@ -72,8 +72,8 @@ resource "aws_route_table_association" "app_public_subnet2" {
 
 # SECURITY GROUPS #
 # Nginx security group 
-resource "aws_security_group" "nginx_sg" {
-  name   = "nginx_sg"
+resource "aws_security_group" "nginx_sg_i" {
+  name   = "nginx_sg_i"
   vpc_id = aws_vpc.app.id
 
   # HTTP access from anywhere
@@ -96,8 +96,8 @@ resource "aws_security_group" "nginx_sg" {
 }
 
 # Nginx security group 
-resource "aws_security_group" "alb_sg" {
-  name   = "nginx_alb_sg"
+resource "aws_security_group" "alb_sg_i" {
+  name   = "nginx_alb_sg_i"
   vpc_id = aws_vpc.app.id
 
   # HTTP access from anywhere

@@ -6,13 +6,13 @@ data "aws_ssm_parameter" "amzn2_linux" {
 
 
 # INSTANCES #
-resource "aws_instance" "nginx1" {
+resource "aws_instance" "nginx1_i" {
   ami                    = nonsensitive(data.aws_ssm_parameter.amzn2_linux.value)
   instance_type          = "t3.micro"
-  iam_instance_profile   = aws_iam_instance_profile.allow_nginx_s3_ip.name
+  iam_instance_profile   = aws_iam_instance_profile.allow_nginx_s3_ip_i.name
   subnet_id              = aws_subnet.public_subnet1.id
-  vpc_security_group_ids = [aws_security_group.nginx_sg.id]
-  depends_on             = [aws_iam_role_policy.allow_nginx_s3_rp]
+  vpc_security_group_ids = [aws_security_group.nginx_sg_i.id]
+  depends_on             = [aws_iam_role_policy.allow_nginx_s3_rp_i]
 
   user_data = <<EOF
 #! /bin/bash
@@ -27,13 +27,13 @@ EOF
 
 }
 
-resource "aws_instance" "nginx2" {
+resource "aws_instance" "nginx2_i" {
   ami                    = nonsensitive(data.aws_ssm_parameter.amzn2_linux.value)
   instance_type          = "t3.micro"
-  iam_instance_profile   = aws_iam_instance_profile.allow_nginx_s3_ip.name
+  iam_instance_profile   = aws_iam_instance_profile.allow_nginx_s3_ip_i.name
   subnet_id              = aws_subnet.public_subnet2.id
-  vpc_security_group_ids = [aws_security_group.nginx_sg.id]
-  depends_on             = [aws_iam_role_policy.allow_nginx_s3_rp]
+  vpc_security_group_ids = [aws_security_group.nginx_sg_i.id]
+  depends_on             = [aws_iam_role_policy.allow_nginx_s3_rp_i]
 
   user_data = <<EOF
 #! /bin/bash
@@ -53,8 +53,8 @@ EOF
 }
 
 #aws_iam_role
-resource "aws_iam_role" "allow_nginx_s3_r" {
-  name = "allow_nginx_s3_r"
+resource "aws_iam_role" "allow_nginx_s3_r_i" {
+  name = "allow_nginx_s3_r_i"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -77,9 +77,9 @@ resource "aws_iam_role" "allow_nginx_s3_r" {
 #aws_iam_role_policy
 
 
-resource "aws_iam_role_policy" "allow_nginx_s3_rp" {
-  name = "allow_nginx_s3_rp"
-  role = aws_iam_role.allow_nginx_s3_r.id
+resource "aws_iam_role_policy" "allow_nginx_s3_rp_i" {
+  name = "allow_nginx_s3_rp_i"
+  role = aws_iam_role.allow_nginx_s3_r_i.id
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -98,9 +98,9 @@ resource "aws_iam_role_policy" "allow_nginx_s3_rp" {
 }
 #aws_iam_instance_profile
 
-resource "aws_iam_instance_profile" "allow_nginx_s3_ip" {
-  name = "allow_nginx_s3_ip"
-  role = aws_iam_role.allow_nginx_s3_r.name
+resource "aws_iam_instance_profile" "allow_nginx_s3_ip_i" {
+  name = "allow_nginx_s3_ip_i"
+  role = aws_iam_role.allow_nginx_s3_r_i.name
 }
 
 data "aws_iam_policy_document" "assume_role" {
