@@ -1,7 +1,7 @@
 variable "aws_region" {
   type        = string
   description = "region chosen"
-  default     = "eu-west-3"
+  default     = "eu-west-1"
 }
 variable "enable_dns_hostnames" {
   type        = bool
