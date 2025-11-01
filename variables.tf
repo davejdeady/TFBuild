@@ -38,7 +38,7 @@ variable "instance_type" {
 variable "company" {
   type        = string
   description = "company name"
-  default     = "Globomantics"
+  default     = "DDDEVOPS.COM"
 }
 variable "project" {
   type        = string

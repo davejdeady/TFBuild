@@ -4,7 +4,7 @@ data "aws_elb_service_account" "root" {}
 
 #aws_lb
 resource "aws_lb" "nginx" {
-  name               = "globo-web-alb"
+  name               = "dddevops-web-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
