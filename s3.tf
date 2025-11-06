@@ -33,8 +33,8 @@ data "aws_iam_policy_document" "elb_logs" {
 
 resource "aws_s3_object" "graphic" {
   bucket = aws_s3_bucket.web_bucket.bucket
-  key    = "/website/DDDEVOPS.png"
-  source = "./website/DDDEVOPS.png"
+  key    = "/website/Globo_logo_Vert.png"
+  source = "./website/Globo_logo_Vert.png"
 
   tags = local.common_tags
 }
